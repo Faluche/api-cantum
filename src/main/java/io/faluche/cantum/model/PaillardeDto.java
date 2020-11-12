@@ -11,11 +11,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class PaillardeDto {
-    private Long id;
     private String title;
     private String text;
 
-    public PaillardeDto(PaillardeEntity paillardeEntity) {
-
+    public static PaillardeDto entityToDto(PaillardeEntity paillardeEntity) {
+        return PaillardeDto.builder()
+                .text(paillardeEntity.getText())
+                .title(paillardeEntity.getTitle())
+                .build();
     }
 }
