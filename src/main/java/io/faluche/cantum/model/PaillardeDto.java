@@ -11,13 +11,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class PaillardeDto {
-    private String title;
-    private String text;
+    private String intitule;
+    private String texte;
+    private TitreDto titrePrincipal;
+    private String commentaire;
+    private Long popularite;
 
     public static PaillardeDto entityToDto(PaillardeEntity paillardeEntity) {
         return PaillardeDto.builder()
-                .text(paillardeEntity.getText())
-                .title(paillardeEntity.getTitle())
+                .texte(paillardeEntity.getTexte())
+                .intitule(paillardeEntity.getIntitule())
+                .titrePrincipal(TitreDto.entityToDto(paillardeEntity.getTitre()))
+                .commentaire(paillardeEntity.getCommentaire())
+                .popularite(paillardeEntity.getPopularite())
                 .build();
     }
 }
